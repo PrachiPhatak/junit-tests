@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class StudentTest {
@@ -40,6 +42,13 @@ public class StudentTest {
        student.addGrade(100);
 
        assertEquals(90.0, student.getGradeAverage());
+   }
+
+   @Test
+    public void testGetGrades(){
+        ArrayList<Integer> grades = new ArrayList<>();
+        grades.add(90);
+       assertEquals(grades, student.getGrades());
    }
 
 }

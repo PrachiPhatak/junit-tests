@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
 
 public class CarDetailsTests {
     Car car;
@@ -20,11 +19,27 @@ public class CarDetailsTests {
         car.setMake("BMW");
         car.setModel("x5");
         car.setYear("2019");
+        car.setElectric(false);
 
         //Act
         String details = CarUtils.getCarDetails(car);
 
-        assertEquals("BMW x5 2019", details);
+        assertEquals("BMW x5 2019 false", details);
+    }
+
+    @Test
+    public void getCarDetailsWithElectricTrue(){
+        //Arrange
+        car = new Car();
+        car.setMake("Tesla");
+        car.setModel("Model S");
+        car.setYear("2020");
+        car.setElectric(true);
+
+        //Act
+        String details = CarUtils.getCarDetails(car);
+
+        assertEquals("Tesla Model S 2020 true", details);
     }
 
     @Test
@@ -48,4 +63,25 @@ public class CarDetailsTests {
 
         assertEquals("Details not found", details);
     }
+
+    @Test
+    public void testAddToMileage_noMileage_returnNull(){
+        //Arrange
+        Car car = new Car();
+
+        //Assert
+        assertEquals(1000.0, Car.addToMileage(car, 1000));
+    }
+
+    @Test
+    public void testAddToMileage_withMileage_returnNewMileage(){
+        //Arrange
+        Car car = new Car();
+        car.setMileage(1000);
+
+        //Assert
+        assertEquals(2000.0, Car.addToMileage(car, 1000));
+    }
+
+
 }

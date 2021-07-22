@@ -54,4 +54,8 @@ public class Car {
     public void setElectric(boolean electric) {
         isElectric = electric;
     }
+
+    public static double addToMileage(Car car, double mileage){
+        return car.getMileage() + mileage;
+    }
 }

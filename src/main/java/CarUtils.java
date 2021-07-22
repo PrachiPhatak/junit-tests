@@ -1,12 +1,8 @@
 public class CarUtils {
 
     public static String getCarDetails(Car car) {
-        String make = car.getMake();
-        String model = car.getModel();
-        String year = car.getYear();
-
-        if (make == null || model == null || year == null)
+        if (car.getMake() == null || car.getModel() == null || car.getYear() == null)
             return "Details not found";
-        return make + " " + model + " " + year;
+        return car.getMake() + " " + car.getModel() + " " + car.getYear() + " " + car.isElectric();
     }
 }

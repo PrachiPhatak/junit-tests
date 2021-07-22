@@ -1,7 +1,8 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
 
 public class CarDetailsTests {
     Car car;
@@ -11,6 +12,13 @@ public class CarDetailsTests {
         System.out.println("Before");
         car = new Car();
     }
+
+    @After
+    public void tearDown(){
+        System.out.println(">>After");
+        car = null;
+    }
+
 
     @Test
     public void getCarDetails(){
@@ -87,45 +95,45 @@ public class CarDetailsTests {
     public void testConvertToElectric_engineTypeNull_returnsFalse(){
         Car car = new Car();
 
-        Car.convertToElectric(car, "");
+        CarUtils.convertToElectric(car, "");
 
-        assertEquals(false, car.isElectric());
+        assertFalse(car.isElectric());
     }
 
     @Test
     public void testConvertToElectric_engineTypeElectric_returnsTrue(){
         Car car = new Car();
 
-        Car.convertToElectric(car, "electric");
+        CarUtils.convertToElectric(car, "electric");
 
-        assertEquals(true, car.isElectric());
+        assertTrue(car.isElectric());
     }
 
     @Test
     public void testConvertToElectric_engineTypeAllCapsElectric_returnsTrue(){
         Car car = new Car();
 
-        Car.convertToElectric(car, "ELECTRIC");
+        CarUtils.convertToElectric(car, "ELECTRIC");
 
-        assertEquals(true, car.isElectric());
+        assertTrue(car.isElectric());
     }
 
     @Test
     public void testConvertToElectric_engineTypeIncludesElectric_returnsTrue(){
         Car car = new Car();
 
-        Car.convertToElectric(car, "Battery Electric Vehicles");
+        CarUtils.convertToElectric(car, "Battery Electric Vehicles");
 
-        assertEquals(true, car.isElectric());
+        assertTrue(car.isElectric());
     }
 
     @Test
     public void testConvertToElectric_engineTypeNoElectric_returnsFalse(){
         Car car = new Car();
 
-        Car.convertToElectric(car, "conventional engines");
+        CarUtils.convertToElectric(car, "conventional engines");
 
-        assertEquals(false, car.isElectric());
+        assertFalse(car.isElectric());
     }
 
 

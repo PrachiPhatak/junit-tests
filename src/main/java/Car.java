@@ -61,8 +61,5 @@ public class Car {
         return car.getMileage() + mileage;
     }
 
-    public static void convertToElectric(Car car, String engineType){
-        if(engineType.toLowerCase().contains("electric"))
-            car.setElectric(true);
-    }
+
 }

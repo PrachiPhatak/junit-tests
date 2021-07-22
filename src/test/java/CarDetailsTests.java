@@ -83,5 +83,50 @@ public class CarDetailsTests {
         assertEquals(2000.0, Car.addToMileage(car, 1000));
     }
 
+    @Test
+    public void testConvertToElectric_engineTypeNull_returnsFalse(){
+        Car car = new Car();
+
+        Car.convertToElectric(car, "");
+
+        assertEquals(false, car.isElectric());
+    }
+
+    @Test
+    public void testConvertToElectric_engineTypeElectric_returnsTrue(){
+        Car car = new Car();
+
+        Car.convertToElectric(car, "electric");
+
+        assertEquals(true, car.isElectric());
+    }
+
+    @Test
+    public void testConvertToElectric_engineTypeAllCapsElectric_returnsTrue(){
+        Car car = new Car();
+
+        Car.convertToElectric(car, "ELECTRIC");
+
+        assertEquals(true, car.isElectric());
+    }
+
+    @Test
+    public void testConvertToElectric_engineTypeIncludesElectric_returnsTrue(){
+        Car car = new Car();
+
+        Car.convertToElectric(car, "Battery Electric Vehicles");
+
+        assertEquals(true, car.isElectric());
+    }
+
+    @Test
+    public void testConvertToElectric_engineTypeNoElectric_returnsFalse(){
+        Car car = new Car();
+
+        Car.convertToElectric(car, "conventional engines");
+
+        assertEquals(false, car.isElectric());
+    }
+
 
 }

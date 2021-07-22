@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Car {
     private String make;
     private String model;
@@ -57,5 +59,10 @@ public class Car {
 
     public static double addToMileage(Car car, double mileage){
         return car.getMileage() + mileage;
+    }
+
+    public static void convertToElectric(Car car, String engineType){
+        if(engineType.toLowerCase().contains("electric"))
+            car.setElectric(true);
     }
 }
